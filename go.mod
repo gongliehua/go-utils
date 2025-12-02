@@ -1,4 +1,4 @@
-module go-utils
+module github.com/gongliehua/go-utils
 
 go 1.24.0
 

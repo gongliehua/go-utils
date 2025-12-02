@@ -11,7 +11,7 @@ func Struct2map(req interface{}, tagKey string, skipZero bool) map[string]interf
 	reqValue := reflect.Indirect(reflect.ValueOf(req))
 	reqType := reqValue.Type()
 	for i := 0; i < reqValue.NumField(); i++ {
-		// 跳过 零 值
+		// 跳过零值
 		if skipZero {
 			if kind := reqValue.Field(i).Kind(); kind == reflect.Slice || kind == reflect.String {
 				if reqValue.Field(i).IsZero() {

@@ -1,0 +1,24 @@
+admins:
+  - type: Many2Many
+    field: Roles
+    table: roles
+    many2many: admin_roles
+    foreignKey: ID
+    references: ID
+    joinForeignKey: AdminID
+    joinReferences: RoleID
+roles:
+  - type: Many2Many
+    field: Permissions
+    table: permissions
+    many2many: role_permissions
+    foreignKey: ID
+    references: ID
+    joinForeignKey: RoleID
+    joinReferences: PermissionID
+permissions:
+  - type: HasMany
+    field: Children
+    table: permissions
+    foreignKey: ParentID
+    references: ID
