@@ -39,10 +39,10 @@ func Where(tx *gorm.DB, req map[string]interface{}, where map[string]string) *go
 			reqKey = k[index+1:]
 			whereKey = k
 		}
-		// 解析操作符(=,<>,>,>=,<,<=,IN,NOT IN,LIKE)
+		// 解析操作符(=,!=,<>,>,>=,<,<=,IN,NOT IN,LIKE)
 		if reqVal, ok := req[reqKey]; ok {
 			switch v {
-			case "=", "<>", ">", ">=", "<", "<=", "IN", "NOT IN":
+			case "=", "!=", "<>", ">", ">=", "<", "<=", "IN", "NOT IN":
 				tx = tx.Where(fmt.Sprintf("%s %s ?", whereKey, v), reqVal)
 			case "LIKE":
 				tx = tx.Where(fmt.Sprintf("%s %s ?", whereKey, v), fmt.Sprintf("%%%s%%", reqVal))
